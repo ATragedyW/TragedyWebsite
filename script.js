@@ -368,3 +368,53 @@ setInterval(
     getCurrentlyPlaying,
     10000
 );
+// League profile: all Riot requests and credentials stay on the server.
+async function loadLeagueProfile() {
+    const container = document.getElementById('leagueProfile');
+    if (!container) return;
+    const element = (tag, className, text) => {
+        const node = document.createElement(tag);
+        node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+    };
+    const portrait = (url, alt) => {
+        const img = element('img', 'league-icon');
+        img.src = url; img.alt = alt; img.loading = 'lazy';
+        return img;
+    };
+    try {
+        const response = await fetch('/api/league', { signal: AbortSignal.timeout(15000) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'League stats are temporarily unavailable.');
+        const header = element('div', 'league-account');
+        header.append(portrait(data.icon, 'League profile icon'));
+        const identity = element('div', '');
+        identity.append(element('h3', '', data.riotId), element('p', 'league-muted', `${data.region} · Level ${data.level}`));
+        header.append(identity);
+        const ranks = element('div', 'league-ranks');
+        for (const queue of ['Solo / Duo', 'Flex']) {
+            const rank = data.ranked.find(entry => entry.queue === queue);
+            const card = element('div', 'league-rank');
+            card.append(element('p', 'eyebrow', queue), element('h4', '', rank ? `${rank.tier} ${rank.division}` : 'Unranked'));
+            card.append(element('p', 'league-muted', rank ? `${rank.lp} LP · ${rank.winRate}% win rate` : 'No ranked placement this season'));
+            if (rank) card.append(element('p', 'league-muted', `${rank.wins}W / ${rank.losses}L`));
+            ranks.append(card);
+        }
+        const champions = element('div', 'league-champions');
+        for (const champion of data.champions) {
+            const card = element('div', 'league-champion');
+            if (champion.icon) card.append(portrait(champion.icon, champion.name));
+            const info = element('div', '');
+            info.append(element('h4', '', champion.name), element('p', 'league-muted', `Mastery ${champion.level} · ${Number(champion.points).toLocaleString()} points`));
+            card.append(info); champions.append(card);
+        }
+        if (!data.champions.length) champions.append(element('p', 'league-muted', 'No champion mastery yet.'));
+        container.replaceChildren(header, ranks, element('h4', 'league-subheading', 'TOP CHAMPIONS'), champions,
+            element('p', 'league-updated', `Updated ${new Date(data.updatedAt).toLocaleString()}`));
+    } catch (error) {
+        container.replaceChildren(element('h3', '', 'League profile unavailable'), element('p', 'league-muted', error.message === 'Failed to fetch' ? 'Unable to connect. Please try again later.' : error.message));
+    }
+}
+loadLeagueProfile();
+setInterval(loadLeagueProfile, 300000);

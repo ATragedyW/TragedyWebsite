@@ -219,7 +219,7 @@ color: #9146ff
 
 .button.primary:hover {
 background: #c084fc;
-
+color: white;
 box-shadow: 0 0 25px rgba(133, 1, 133, 0.6);
 transform: translateY(-3px);
 }
@@ -807,3 +807,26 @@ MOBILE
 
 }
 
+
+/* League profile */
+.league-section { padding: 140px 10%; scroll-margin-top: 80px; }
+.league-profile { max-width: 1000px; padding: 32px; background: #111; border: 1px solid #352044; }
+.league-account, .league-champion { display: flex; align-items: center; gap: 20px; }
+.league-account h3 { font-size: clamp(24px, 4vw, 40px); overflow-wrap: anywhere; }
+.league-icon { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; }
+.league-muted { color: #aaa; line-height: 1.6; margin-top: 6px; }
+.league-ranks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 30px 0; }
+.league-rank { padding: 24px; background: #17121d; border: 1px solid #352044; }
+.league-rank .eyebrow { letter-spacing: 2px; margin-bottom: 12px; }
+.league-rank h4 { font-size: 24px; }
+.league-subheading { letter-spacing: 2px; margin-bottom: 20px; }
+.league-champions { display: grid; gap: 18px; }
+.league-champion .league-icon { width: 56px; height: 56px; }
+.league-updated, .riot-notice { color: #999; font-size: 12px; line-height: 1.6; margin-top: 24px; }
+@media (max-width: 800px) {
+    .league-section { padding: 100px 7%; }
+    .league-ranks { grid-template-columns: 1fr; }
+    .league-profile { padding: 20px; }
+    .navbar nav { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .navbar { gap: 15px; }
+}

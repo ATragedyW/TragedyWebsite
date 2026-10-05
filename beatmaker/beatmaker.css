@@ -1,0 +1,310 @@
+/* ================================
+   TRAGEDY // BEATMAKER
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, #1a0505 0%, #090909 35%, #030303 75%);
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* HEADER */
+
+header {
+    width: 100%;
+    padding: 30px 40px;
+}
+
+.back-button {
+    color: #777;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+}
+
+.back-button:hover {
+    color: #fff;
+}
+
+/* MAIN */
+
+.beatmaker {
+    width: min(1200px, 94%);
+    margin: 20px auto 80px;
+}
+
+/* TITLE */
+
+.title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.title p {
+    color: #8b0000;
+    font-size: 12px;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+}
+
+.title h1 {
+    font-size: clamp(42px, 7vw, 82px);
+    letter-spacing: 8px;
+    font-weight: 900;
+}
+
+.title span {
+    display: block;
+    margin-top: 10px;
+    color: #555;
+    font-size: 11px;
+    letter-spacing: 5px;
+}
+
+/* TOP CONTROLS */
+
+.controls {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.bpm-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bpm-control label,
+.volume-control label {
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+#bpm {
+    width: 90px;
+    height: 45px;
+    padding: 0 12px;
+    border: 1px solid #252525;
+    background: #0c0c0c;
+    color: white;
+    outline: none;
+}
+
+#bpm:focus {
+    border-color: #6d0000;
+}
+
+/* BUTTONS */
+
+button {
+    height: 45px;
+    padding: 0 22px;
+
+    border: 1px solid #292929;
+    background: #0c0c0c;
+    color: #aaa;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+button:hover {
+    border-color: #750000;
+    color: #fff;
+    background: #140505;
+}
+
+#playButton {
+    border-color: #550000;
+}
+
+/* SEQUENCER */
+
+.sequencer {
+    padding: 30px;
+
+    border: 1px solid #191919;
+    background: rgba(7, 7, 7, 0.85);
+
+    box-shadow:
+        0 20px 80px rgba(0, 0, 0, 0.5),
+        inset 0 1px rgba(255, 255, 255, 0.02);
+
+    overflow-x: auto;
+}
+
+/* TRACK */
+
+.track {
+    min-width: 850px;
+
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+.track:last-child {
+    margin-bottom: 0;
+}
+
+.track-name {
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* STEP GRID */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 7px;
+}
+
+.step {
+    aspect-ratio: 1 / 1;
+
+    min-width: 32px;
+    max-height: 48px;
+
+    border: 1px solid #252525;
+    background: #101010;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+/* Separate each group of four beats */
+
+.step:nth-child(4n + 1) {
+    margin-left: 5px;
+}
+
+.step:first-child {
+    margin-left: 0;
+}
+
+.step:hover {
+    border-color: #555;
+    transform: translateY(-1px);
+}
+
+/* ACTIVE STEP */
+
+.step.active {
+    background: #730909;
+    border-color: #b31a1a;
+
+    box-shadow:
+        0 0 10px rgba(150, 0, 0, 0.25);
+}
+
+/* CURRENT PLAYHEAD */
+
+.step.playing {
+    border-color: #fff;
+
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.35);
+}
+
+.step.active.playing {
+    background: #a40d0d;
+
+    box-shadow:
+        0 0 16px rgba(180, 0, 0, 0.5);
+}
+
+/* BOTTOM CONTROLS */
+
+.bottom-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-top: 25px;
+}
+
+.volume-control {
+    width: 280px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#masterVolume {
+    width: 100%;
+    accent-color: #770000;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 22px;
+    }
+
+    .beatmaker {
+        margin-top: 10px;
+    }
+
+    .title {
+        margin-bottom: 35px;
+    }
+
+    .title h1 {
+        letter-spacing: 4px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+
+    .sequencer {
+        padding: 20px 15px;
+    }
+
+    .bottom-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 25px;
+    }
+
+    .volume-control {
+        width: 100%;
+    }
+}

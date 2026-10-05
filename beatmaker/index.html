@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tragedy // Beatmaker</title>
+
+    <link rel="stylesheet" href="beatmaker.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="back-button">← BACK TO TRAGEDY</a>
+    </header>
+
+    <main class="beatmaker">
+
+        <div class="title">
+            <p>TRAGEDY</p>
+            <h1>BEATMAKER</h1>
+            <span>WELCOME TO THE CHAOS</span>
+        </div>
+
+        <div class="controls">
+
+            <div class="bpm-control">
+                <label for="bpm">BPM</label>
+                <input
+                    type="number"
+                    id="bpm"
+                    value="128"
+                    min="40"
+                    max="240"
+                >
+            </div>
+
+            <button id="playButton">▶ PLAY</button>
+            <button id="stopButton">■ STOP</button>
+
+        </div>
+
+        <div class="sequencer" id="sequencer">
+
+            <div class="track" data-sound="kick">
+                <div class="track-name">KICK</div>
+                <div class="steps"></div>
+            </div>
+
+            <div class="track" data-sound="snare">
+                <div class="track-name">SNARE</div>
+                <div class="steps"></div>
+            </div>
+
+            <div class="track" data-sound="clap">
+                <div class="track-name">CLAP</div>
+                <div class="steps"></div>
+            </div>
+
+            <div class="track" data-sound="hihat">
+                <div class="track-name">HI-HAT</div>
+                <div class="steps"></div>
+            </div>
+
+            <div class="track" data-sound="openhat">
+                <div class="track-name">OPEN HAT</div>
+                <div class="steps"></div>
+            </div>
+
+        </div>
+
+        <div class="bottom-controls">
+
+            <div class="volume-control">
+                <label for="masterVolume">MASTER</label>
+
+                <input
+                    type="range"
+                    id="masterVolume"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.8"
+                >
+            </div>
+
+            <button id="clearButton">CLEAR PATTERN</button>
+
+        </div>
+
+    </main>
+
+    <script src="beatmaker.js"></script>
+
+</body>
+</html>

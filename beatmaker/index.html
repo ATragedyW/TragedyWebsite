@@ -44,32 +44,104 @@
 
         <div class="sequencer" id="sequencer">
 
-            <div class="track" data-sound="kick">
-                <div class="track-name">KICK</div>
-                <div class="steps"></div>
-            </div>
+    <!-- KICK -->
+    <div class="track" data-sound="kick">
 
-            <div class="track" data-sound="snare">
-                <div class="track-name">SNARE</div>
-                <div class="steps"></div>
-            </div>
+        <div class="track-controls">
+            <div class="track-name">KICK</div>
 
-            <div class="track" data-sound="clap">
-                <div class="track-name">CLAP</div>
-                <div class="steps"></div>
-            </div>
-
-            <div class="track" data-sound="hihat">
-                <div class="track-name">HI-HAT</div>
-                <div class="steps"></div>
-            </div>
-
-            <div class="track" data-sound="openhat">
-                <div class="track-name">OPEN HAT</div>
-                <div class="steps"></div>
-            </div>
-
+            <select class="sound-select" data-sound="kick">
+                <option value="deep">DEEP</option>
+                <option value="punchy">PUNCHY</option>
+                <option value="house">HOUSE</option>
+                <option value="808">808</option>
+                <option value="distorted">DISTORTED</option>
+            </select>
         </div>
+
+        <div class="steps"></div>
+
+    </div>
+
+
+    <!-- SNARE -->
+    <div class="track" data-sound="snare">
+
+        <div class="track-controls">
+            <div class="track-name">SNARE</div>
+
+            <select class="sound-select" data-sound="snare">
+                <option value="crisp">CRISP</option>
+                <option value="trap">TRAP</option>
+                <option value="acoustic">ACOUSTIC</option>
+                <option value="tight">TIGHT</option>
+                <option value="heavy">HEAVY</option>
+            </select>
+        </div>
+
+        <div class="steps"></div>
+
+    </div>
+
+
+    <!-- CLAP -->
+    <div class="track" data-sound="clap">
+
+        <div class="track-controls">
+            <div class="track-name">CLAP</div>
+
+            <select class="sound-select" data-sound="clap">
+                <option value="classic">CLASSIC</option>
+                <option value="wide">WIDE</option>
+                <option value="short">SHORT</option>
+                <option value="bright">BRIGHT</option>
+            </select>
+        </div>
+
+        <div class="steps"></div>
+
+    </div>
+
+
+    <!-- HI-HAT -->
+    <div class="track" data-sound="hihat">
+
+        <div class="track-controls">
+            <div class="track-name">HI-HAT</div>
+
+            <select class="sound-select" data-sound="hihat">
+                <option value="classic">CLASSIC</option>
+                <option value="trap">TRAP</option>
+                <option value="lofi">LO-FI</option>
+                <option value="metallic">METALLIC</option>
+                <option value="soft">SOFT</option>
+            </select>
+        </div>
+
+        <div class="steps"></div>
+
+    </div>
+
+
+    <!-- OPEN HAT -->
+    <div class="track" data-sound="openhat">
+
+        <div class="track-controls">
+            <div class="track-name">OPEN HAT</div>
+
+            <select class="sound-select" data-sound="openhat">
+                <option value="classic">CLASSIC</option>
+                <option value="long">LONG</option>
+                <option value="bright">BRIGHT</option>
+                <option value="dark">DARK</option>
+            </select>
+        </div>
+
+        <div class="steps"></div>
+
+    </div>
+
+</div>
 
         <div class="bottom-controls">
 
@@ -85,14 +157,55 @@
                     value="0.8"
                 >
             </div>
+            <div class="beat-storage">
+
+    <input
+        type="text"
+        id="beatName"
+        maxlength="40"
+        placeholder="BEAT NAME"
+    >
+
+    <button id="saveBeatButton">
+        SAVE BEAT
+    </button>
+
+    <button id="loadBeatsButton">
+        LOAD BEATS
+    </button>
+
+</div>
+
 
             <button id="clearButton">CLEAR PATTERN</button>
 
         </div>
+        <p id="beatMessage"></p>
+        <div id="savedBeatsPanel" class="saved-beats-panel" hidden>
+
+    <div class="saved-beats-header">
+        <div>
+            <p>TRAGEDY // LIBRARY</p>
+            <h2>SAVED BEATS</h2>
+        </div>
+
+        <button
+            id="closeBeatsButton"
+            type="button"
+        >
+            ✕
+        </button>
+    </div>
+
+    <div id="savedBeatsList" class="saved-beats-list">
+    </div>
+
+</div>
 
     </main>
 
-    <script src="beatmaker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/beatmaker/beatmaker.js"></script>
 
 </body>
 </html>

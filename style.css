@@ -1,4 +1,8 @@
-
+/* =========================================================
+   TRAGEDY // MAIN SITE
+   Cleaned stylesheet
+   Core theme: black / white / purple
+   ========================================================= */
 
 *{
     margin: 0;
@@ -247,14 +251,6 @@ transform: translateY(-3px);
    box-shadow: 0 0 25px rgba(145, 70, 255, 0.6);
 }
 
-.button{
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
-}
-
 .button:hover {
     transform: translateY(-4px);
 }
@@ -474,136 +470,6 @@ MOBILE
 }
 
 
-/* Album artwork */
-
-.now-playing img {
-    width: 200px;
-    height: 200px;
-
-    object-fit: cover;
-
-    flex-shrink: 0;
-}
-
-
-/* Song information */
-
-.song-info {
-    flex: 1;
-}
-
-.song-info h3 {
-    font-size: clamp(25px, 4vw, 40px);
-
-    margin: 15px 0 8px;
-
-    line-height: 1.1;
-}
-
-.song-info .artist {
-    color: #888;
-
-    font-size: 18px;
-}
-
-
-/* Spotify status */
-
-.spotify-status {
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    color: #1db954;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-
-    background: #1db954;
-
-    border-radius: 50%;
-
-    animation: spotifyPulse 1.5s infinite;
-}
-
-@keyframes spotifyPulse {
-
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.3;
-        transform: scale(0.7);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-
-/* Spotify button */
-
-.spotify-link {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    padding: 12px 20px;
-
-    background: #1db954;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    transition: 0.3s;
-}
-
-.spotify-link:hover {
-    background: #1ed760;
-
-    transform: translateY(-2px);
-}
-
-
-/* Mobile */
-
-@media (max-width: 800px) {
-
-    .now-playing {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .now-playing img {
-        width: 100%;
-        height: auto;
-
-        max-width: 350px;
-    }
-
-}
 /* =========================
    SPOTIFY
 ========================= */
@@ -888,4 +754,1166 @@ MOBILE
         gap: 20px;
         text-align: center;
     }
+}
+/* ========================================
+   TRAGEDY // NAVIGATION V2
+======================================== */
+
+/* Main navbar layout */
+
+.navbar {
+    padding: 0 5%;
+
+    gap: 45px;
+
+    justify-content: flex-start;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.navbar .logo {
+    flex-shrink: 0;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    color: #fff;
+}
+
+
+/* ========================================
+   MAIN NAVIGATION
+======================================== */
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+
+    flex: 1;
+
+    height: 100%;
+}
+
+.navbar .nav-links > a {
+    color: #aaa;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-links > a:hover {
+    color: #a855f7;
+}
+
+
+/* ========================================
+   DROPDOWNS
+======================================== */
+
+.nav-dropdown {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    height: 100%;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    color: #aaa;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.dropdown-button:hover {
+    color: #a855f7;
+}
+
+.dropdown-arrow {
+    color: #a855f7;
+
+    font-size: 9px;
+
+    transition: transform 0.2s ease;
+}
+
+
+/* Dropdown panel */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: 65px;
+    left: -18px;
+
+    width: 175px;
+
+    padding: 8px;
+
+    background: rgba(8, 8, 8, 0.98);
+
+    border: 1px solid #292929;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.7);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-6px);
+
+    transition:
+        opacity 0.18s ease,
+        visibility 0.18s ease,
+        transform 0.18s ease;
+
+    z-index: 2000;
+}
+
+
+/* Dropdown links */
+
+.navbar .dropdown-menu a {
+    display: block;
+
+    padding: 12px 14px;
+
+    color: #777;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+.navbar .dropdown-menu a:hover {
+    color: #fff;
+
+    background: rgba(168, 85, 247, 0.12);
+
+    padding-left: 18px;
+}
+
+
+/* Open dropdown */
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.nav-dropdown:hover .dropdown-arrow,
+.nav-dropdown:focus-within .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* ========================================
+   ACCOUNT
+======================================== */
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    flex-shrink: 0;
+
+    margin-left: auto;
+}
+
+.navbar .login-nav {
+    color: #aaa;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.navbar .login-nav:hover {
+    color: #fff;
+}
+
+.navbar .signup-nav {
+    padding: 10px 18px;
+
+    color: #ddd;
+
+    border: 1px solid #8f0000;
+
+    background: rgba(120, 0, 0, 0.12);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.navbar .signup-nav:hover {
+    color: #fff;
+
+    background: #950000;
+
+    border-color: #c00000;
+
+    box-shadow:
+        0 0 20px rgba(200, 0, 0, 0.22);
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        gap: 25px;
+
+        padding: 0 3%;
+    }
+
+    .navbar .nav-links {
+        gap: 20px;
+    }
+
+    .navbar .logo {
+        font-size: 16px;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 18px 5%;
+
+        flex-wrap: wrap;
+    }
+
+    .navbar .nav-links {
+        order: 3;
+
+        width: 100%;
+        height: auto;
+
+        gap: 20px;
+
+        padding-top: 15px;
+
+        border-top: 1px solid #1c1c1c;
+    }
+
+    .nav-dropdown {
+        height: auto;
+    }
+
+    .dropdown-button {
+        height: auto;
+    }
+
+    .dropdown-menu {
+        top: 30px;
+    }
+
+}
+/* ========================================
+   LOGGED-IN ACCOUNT MENU
+======================================== */
+
+.logged-out-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-menu[hidden] {
+    display: none;
+}
+
+.user-menu-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    background: transparent;
+
+    border: 1px solid #292929;
+
+    color: #aaa;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+.user-menu-button:hover {
+    color: #fff;
+    border-color: #a855f7;
+}
+
+
+/* Dropdown */
+
+.user-dropdown {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    right: 0;
+
+    min-width: 180px;
+
+    padding: 8px;
+
+    background: #090909;
+
+    border: 1px solid #292929;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.7);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-5px);
+
+    transition:
+        opacity 0.18s ease,
+        visibility 0.18s ease,
+        transform 0.18s ease;
+
+    z-index: 2000;
+}
+
+
+/* Open */
+
+.user-menu:hover .user-dropdown,
+.user-menu:focus-within .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/* Links + logout */
+
+.user-dropdown a,
+.user-dropdown button {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #777;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-align: left;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.user-dropdown a:hover {
+    color: #fff;
+
+    background: rgba(168, 85, 247, 0.12);
+}
+
+.user-dropdown button {
+    margin-top: 5px;
+
+    border-top: 1px solid #222;
+
+    color: #a44;
+}
+
+.user-dropdown button:hover {
+    color: #ff4444;
+
+    background: rgba(150, 0, 0, 0.12);
+}
+/* ========================================
+   AUTH VISIBILITY FIX
+======================================== */
+
+.logged-out-nav[hidden] {
+    display: none !important;
+}
+
+.user-menu[hidden] {
+    display: none !important;
+}
+
+/* ========================================
+   PROJECTS // DARK PURPLE
+======================================== */
+
+.projects {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(168, 85, 247, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(95, 30, 150, 0.06),
+            transparent 25%
+        ),
+        #080709;
+
+    color: #f5f5f5;
+
+    border-top: 1px solid #19151d;
+    border-bottom: 1px solid #19151d;
+}
+
+
+/* Giant background typography */
+.projects::before {
+    content: "PROJECTS";
+
+    position: absolute;
+
+    right: -30px;
+    bottom: -25px;
+    top: auto;
+
+    font-size: clamp(120px, 18vw, 300px);
+    font-weight: 900;
+
+    line-height: 0.8;
+    letter-spacing: -12px;
+
+    color: rgba(168, 85, 247, 0.025);
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.projects > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ========================================
+   HEADING
+======================================== */
+
+.projects .section-heading .eyebrow {
+    color: #a855f7;
+}
+
+.projects .section-heading h2 {
+    color: #f5f5f5;
+}
+
+.projects .section-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 20px;
+
+    background: #a855f7;
+
+    box-shadow:
+        15px 4px 0 rgba(168, 85, 247, 0.25);
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+.projects .project-card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 17, 23, 0.92),
+            rgba(10, 9, 11, 0.96)
+        );
+
+    border: 1px solid #27222c;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.projects .project-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #66318f;
+
+    box-shadow:
+        0 20px 55px rgba(80, 25, 120, 0.12);
+}
+
+
+/* Purple top accent */
+
+.projects .project-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: -1px;
+
+    width: 35px;
+    height: 2px;
+
+    background: #a855f7;
+
+    transition: width 0.25s ease;
+}
+
+.projects .project-card:hover::before {
+    width: 80px;
+}
+
+
+/* ========================================
+   CARD CONTENT
+======================================== */
+
+.projects .project-number {
+    color: #8141b5;
+}
+
+.projects .project-card h3 {
+    color: #f5f5f5;
+}
+
+.projects .project-card p {
+    color: #77727b;
+}
+
+.projects .project-card a {
+    color: #a855f7;
+
+    transition:
+        color 0.2s ease,
+        letter-spacing 0.2s ease;
+}
+
+.projects .project-card a:hover {
+    color: #c084fc;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   WATCH // DARK PURPLE
+======================================== */
+
+.watch-section {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(145, 70, 232, 0.11),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(90, 35, 130, 0.07),
+            transparent 25%
+        ),
+        #060607;
+
+    border-top: 1px solid #18141c;
+    border-bottom: 1px solid #18141c;
+}
+
+/* Faint WATCH background text */
+
+.watch-section::before {
+    content: "WATCH";
+
+    position: absolute;
+    right: -25px;
+    top: 30px;
+
+    font-size: clamp(140px, 20vw, 330px);
+    font-weight: 900;
+    line-height: 0.8;
+
+    letter-spacing: -12px;
+
+    color: rgba(168, 85, 247, 0.025);
+
+    pointer-events: none;
+}
+
+.watch-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.watch-section .eyebrow {
+    color: #a855f7;
+}
+
+/* Twitch player container */
+
+.watch-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 15, 21, 0.96),
+            rgba(7, 7, 8, 0.98)
+        );
+
+    border: 1px solid #29232f;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.watch-card:hover {
+    border-color: #4d2a68;
+}
+
+.watch-link {
+    color: #a855f7;
+}
+
+.watch-link:hover {
+    color: #c084fc;
+}
+
+
+/* ========================================
+   SPOTIFY // PURPLE ATMOSPHERE
+======================================== */
+
+.spotify-section {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(168, 85, 247, 0.14),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(90, 35, 130, 0.07),
+            transparent 25%
+        ),
+        #09070b;
+
+    border-top: 1px solid #1d1821;
+    border-bottom: 1px solid #1d1821;
+}
+
+
+/* Giant MUSIC background text */
+
+.spotify-section::before {
+    content: "MUSIC";
+
+    position: absolute;
+    left: -25px;
+    bottom: 20px;
+
+    font-size: clamp(140px, 21vw, 340px);
+    font-weight: 900;
+
+    line-height: 0.8;
+    letter-spacing: -14px;
+
+    color: rgba(168, 85, 247, 0.025);
+
+    pointer-events: none;
+}
+
+.spotify-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.spotify-section .eyebrow {
+    color: #a855f7;
+}
+
+
+/* ========================================
+   NOW PLAYING CARD
+======================================== */
+
+.spotify-section .now-playing {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22, 17, 26, 0.96),
+            rgba(9, 8, 10, 0.98)
+        );
+
+    border: 1px solid #2d2533;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.spotify-section .now-playing:hover {
+    transform: translateY(-3px);
+
+    border-color: #5c3476;
+
+    box-shadow:
+        0 35px 90px rgba(55, 15, 80, 0.18);
+}
+
+
+/* Purple top detail */
+
+.spotify-section .now-playing::before {
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: -1px;
+
+    width: 70px;
+    height: 2px;
+
+    background: #a855f7;
+
+    box-shadow:
+        25px 0 30px rgba(168, 85, 247, 0.35);
+}
+
+/* =========================================================
+   LEAGUE // VOID PURPLE
+   ========================================================= */
+
+.league-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 18% 35%,
+            rgba(168, 85, 247, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 88% 75%,
+            rgba(95, 45, 140, 0.06),
+            transparent 24%
+        ),
+        #060607;
+
+    border-top: 1px solid #18141c;
+    border-bottom: 1px solid #18141c;
+}
+
+.league-section::before {
+    content: "RIFT";
+
+    position: absolute;
+
+    right: -25px;
+    top: -25px;
+    bottom: auto;
+
+    z-index: -1;
+
+    color: rgba(168, 85, 247, 0.025);
+
+    font-size: clamp(140px, 21vw, 340px);
+    font-weight: 900;
+
+    line-height: 0.8;
+    letter-spacing: -14px;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+
+
+.league-section .eyebrow {
+    color: #a855f7;
+}
+
+.league-profile {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 15, 21, 0.96),
+            rgba(7, 7, 8, 0.98)
+        );
+
+    border: 1px solid #29232f;
+
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.league-profile::before {
+    content: "";
+
+    position: absolute;
+    top: -1px;
+    left: -1px;
+
+    width: 65px;
+    height: 2px;
+
+    background: #a855f7;
+
+    box-shadow:
+        25px 0 30px rgba(168, 85, 247, 0.22);
+}
+
+.league-profile:hover {
+    transform: translateY(-3px);
+
+    border-color: #56336d;
+
+    box-shadow:
+        0 32px 80px rgba(65, 20, 90, 0.14);
+}
+
+.league-profile h3 {
+    color: #f5f5f5;
+}
+
+.league-muted,
+.riot-notice {
+    color: #6f6974;
+}
+
+.riot-notice {
+    max-width: 900px;
+    margin-top: 18px;
+
+    font-size: 9px;
+    line-height: 1.6;
+    letter-spacing: 0.35px;
+}
+
+
+/* =========================================================
+   ABOUT // PURPLE ATMOSPHERE
+   ========================================================= */
+
+.about {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 78% 42%,
+            rgba(168, 85, 247, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 90%,
+            rgba(75, 25, 110, 0.07),
+            transparent 26%
+        ),
+        #09070b;
+
+    border-top: 1px solid #1c1720;
+    border-bottom: 1px solid #1c1720;
+}
+
+.about::before {
+    content: "TRAGEDY";
+
+    position: absolute;
+    left: -35px;
+    top: -30px;
+    bottom: auto;   
+
+    z-index: -1;
+
+    color: rgba(168, 85, 247, 0.028);
+
+    font-size: clamp(130px, 20vw, 330px);
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -14px;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.about::after {
+    content: "//";
+
+    position: absolute;
+    right: 7%;
+    top: 55px;
+
+    color: rgba(168, 85, 247, 0.35);
+
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 8px;
+
+    pointer-events: none;
+}
+
+.about .eyebrow {
+    color: #a855f7;
+}
+
+.about .section-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 20px;
+
+    background: #a855f7;
+
+    box-shadow:
+        15px 4px 0 rgba(168, 85, 247, 0.24);
+}
+
+.about-text {
+    position: relative;
+
+    max-width: 760px;
+
+    padding: 28px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18, 15, 21, 0.74),
+            rgba(8, 8, 9, 0.72)
+        );
+
+    border: 1px solid #28222d;
+    border-left: 2px solid #7e3caf;
+
+    color: #a49da8;
+
+    line-height: 1.8;
+
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.about-text::before {
+    content: "WELCOME TO THE CHAOS";
+
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #a855f7;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   LEAGUE + ABOUT // MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .league-section::before,
+    .about::before {
+        font-size: 120px;
+        letter-spacing: -7px;
+    }
+
+    .about::after {
+        top: 35px;
+        right: 5%;
+    }
+
+    .about-text {
+        padding: 22px 20px;
+    }
+}
+
+/* ========================================
+   BACKGROUND WORDS // TOP EDGE
+======================================== */
+
+.watch-section::before,
+.spotify-section::before,
+.league-section::before,
+.projects::before,
+.about::before {
+    top: -30px;
+    bottom: auto;
+}
+
+/* ========================================
+   SECTION // DETAILS
+======================================== */
+
+
+
+/* Slightly different placement per section */
+
+.watch-section::after {
+    right: 7%;
+    bottom: 55px;
+}
+
+.spotify-section::after {
+    left: 7%;
+    bottom: 55px;
+}
+
+
+.projects::after {
+    left: 7%;
+    bottom: 55px;
+}
+
+.about::after {
+    right: 7%;
+    top: 55px;
 }

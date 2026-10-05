@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login // Tragedy</title>
+
+    <link rel="stylesheet" href="/login/login.css">
+</head>
+
+<body>
+
+    <a href="/" class="back-button">← BACK TO TRAGEDY</a>
+
+    <main class="login-page">
+
+        <section class="login-card">
+
+            <div class="brand">
+                <p class="brand-name">TRAGEDY</p>
+
+                <h1>WELCOME<br>BACK</h1>
+
+                <p class="subtitle">
+                    Return to the chaos.
+                </p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        autocomplete="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">PASSWORD</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        autocomplete="current-password"
+                        placeholder="••••••••"
+                        required
+                    >
+                </div>
+
+                <p id="formMessage"></p>
+
+                <button type="submit" class="login-button">
+                    ENTER
+                </button>
+
+            </form>
+
+            <div class="signup-link">
+                <span>Not part of the chaos?</span>
+                <a href="/signup/">CREATE ACCOUNT</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/login/login.js"></script>
+
+</body>
+
+</html>

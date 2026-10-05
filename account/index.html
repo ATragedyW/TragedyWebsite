@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Account // Tragedy</title>
+
+    <link rel="stylesheet" href="/account/account.css">
+</head>
+
+<body>
+
+    <header class="account-nav">
+
+        <a href="/" class="logo">
+            TRAGEDY
+        </a>
+
+        <a href="/" class="back-link">
+            ← BACK TO SITE
+        </a>
+
+    </header>
+
+
+    <main class="account-page">
+
+        <section class="account-container">
+
+            <div class="account-heading">
+
+                <p class="eyebrow">
+                    TRAGEDY // ACCOUNT
+                </p>
+
+                <h1>YOUR<br>ACCOUNT</h1>
+
+                <p class="subtitle">
+                    Welcome back to the chaos.
+                </p>
+
+            </div>
+
+
+            <!-- Loading -->
+
+            <div
+                id="accountLoading"
+                class="account-message"
+            >
+                Loading account...
+            </div>
+
+
+            <!-- Account information -->
+
+            <div
+                id="accountContent"
+                class="account-content"
+                hidden
+            >
+
+                <div class="account-card">
+
+                    <p class="field-label">
+                        USERNAME
+                    </p>
+
+                    <p
+                        class="field-value"
+                        id="accountUsername"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+                <div class="account-card">
+
+                    <p class="field-label">
+                        EMAIL
+                    </p>
+
+                    <p
+                        class="field-value"
+                        id="accountEmail"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+                <div class="account-card">
+
+                    <p class="field-label">
+                        MEMBER SINCE
+                    </p>
+
+                    <p
+                        class="field-value"
+                        id="accountCreated"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+                <div class="account-actions">
+
+                    <a
+                        href="/beatmaker/"
+                        class="account-button"
+                    >
+                        OPEN BEATMAKER
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logoutButton"
+                        class="logout-button"
+                    >
+                        LOG OUT
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/account/account.js"></script>
+
+</body>
+
+</html>

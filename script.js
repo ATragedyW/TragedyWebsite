@@ -440,7 +440,6 @@ function mountTwitchStream() {
             frame.title = 'TragedyADC live stream on Twitch';
             frame.src = url.toString();
             frame.allow = 'autoplay; fullscreen; picture-in-picture';
-            frame.allowFullscreen = true;
             frame.loading = 'lazy';
             mount.replaceChildren(frame);
             showingPlayer = true;
@@ -457,3 +456,122 @@ function mountTwitchStream() {
     else window.addEventListener('resize', update);
 }
 mountTwitchStream();
+
+// ========================================
+// TRAGEDY // AUTH STATE
+// ========================================
+
+const SUPABASE_URL = "https://gckhdwlyvsystwirgvmf.supabase.co";
+const SUPABASE_KEY = "sb_publishable__gaBR077T17LOA3z6lpy0Q_GWPNrHmH";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+const loggedOutNav =
+    document.getElementById("loggedOutNav");
+
+const userMenu =
+    document.getElementById("userMenu");
+
+const navUsername =
+    document.getElementById("navUsername");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+// ========================================
+// UPDATE NAVBAR
+// ========================================
+
+async function updateAuthNavigation() {
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+
+    // LOGGED OUT
+
+    if (!session) {
+
+        loggedOutNav.hidden = false;
+        userMenu.hidden = true;
+
+        return;
+    }
+
+
+    // LOGGED IN
+
+    const user = session.user;
+
+    const username =
+        user.user_metadata?.username ||
+        user.email?.split("@")[0] ||
+        "ACCOUNT";
+
+
+    navUsername.textContent =
+        username.toUpperCase();
+
+
+    loggedOutNav.hidden = true;
+    userMenu.hidden = false;
+
+}
+
+
+// ========================================
+// LOGOUT
+// ========================================
+
+logoutButton.addEventListener(
+    "click",
+    async () => {
+
+        logoutButton.disabled = true;
+        logoutButton.textContent = "LOGGING OUT...";
+
+        const { error } =
+            await supabaseClient.auth.signOut();
+
+
+        if (error) {
+
+            console.error(
+                "Logout error:",
+                error
+            );
+
+            logoutButton.disabled = false;
+            logoutButton.textContent = "LOG OUT";
+
+            return;
+        }
+
+
+        window.location.href = "/";
+
+    }
+);
+
+
+// ========================================
+// LISTEN FOR AUTH CHANGES
+// ========================================
+
+supabaseClient.auth.onAuthStateChange(
+    () => {
+
+        updateAuthNavigation();
+
+    }
+);
+
+
+// Initial check
+
+updateAuthNavigation();

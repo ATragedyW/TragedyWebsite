@@ -6,6 +6,22 @@
 const changelog = [
 
     {
+    version: "1.4.0",
+    date: "OCT 05 2026",
+    title: "ACCOUNTS + VISUAL OVERHAUL",
+    changes: [
+        ["+", "Added user sign up and login"],
+        ["+", "Added account pages"],
+        ["+", "Added Beatmaker beat saving"],
+        ["+", "Added saved beat loading and deletion"],
+        ["+", "Added multiple drum sound variants"],
+        ["~", "Redesigned the site around a black, white, and purple theme"],
+        ["~", "Updated Watch, Spotify, League, Projects, and About sections"],
+        ["~", "Improved Beatmaker interface"],
+        ["~", "Cleaned up site styling and navigation"]
+    ]
+},
+    {
         version: "1.3.0",
         date: "OCT 04 2026",
         title: "BEATMAKER",

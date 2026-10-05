@@ -1917,3 +1917,79 @@ MOBILE
     right: 7%;
     top: 55px;
 }
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+        padding: 15px 20px;
+    }
+
+    /* Main sections */
+    section {
+        padding: 70px 20px;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 100svh;
+        padding: 100px 20px 50px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+        line-height: 0.9;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    /* Buttons */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Projects/cards */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Huge background words */
+    .background-text {
+        font-size: clamp(4rem, 25vw, 9rem);
+        white-space: nowrap;
+    }
+
+    /* Spotify / Twitch sections */
+    .spotify-container,
+    .twitch-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+        height: auto;
+    }
+}

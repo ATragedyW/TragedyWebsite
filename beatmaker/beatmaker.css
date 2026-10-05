@@ -625,3 +625,195 @@ button:hover {
             rgba(10, 10, 10, 0.95)
         );
 }
+/* ========================================
+   MOBILE BEATMAKER
+======================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .beatmaker {
+        width: 100%;
+        padding: 0 14px;
+        margin: 10px auto 50px;
+    }
+
+    .title {
+        margin-bottom: 30px;
+    }
+
+    .title h1 {
+        font-size: clamp(36px, 12vw, 56px);
+        letter-spacing: 3px;
+    }
+
+    .title p {
+        letter-spacing: 5px;
+    }
+
+    /* PLAY / STOP / BPM */
+
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .bpm-control {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    #bpm {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    #playButton,
+    #stopButton {
+        width: 100%;
+        height: 50px;
+    }
+
+    /* SEQUENCER */
+
+    .sequencer {
+        width: 100%;
+        padding: 15px;
+        margin-top: 25px;
+        overflow-x: hidden;
+    }
+
+    .track {
+        min-width: 0;
+        width: 100%;
+
+        display: block;
+
+        padding: 16px 0;
+
+        border-bottom: 1px solid #1d1d1d;
+    }
+
+    .track:last-child {
+        border-bottom: none;
+    }
+
+    /* TRACK NAME / SOUND */
+
+    .track-controls {
+        width: 100%;
+        margin-bottom: 14px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .track-name {
+        font-size: 10px;
+    }
+
+    .sound-select {
+        width: 130px;
+        height: 42px;
+        font-size: 11px;
+    }
+
+    /* 16 STEPS -> TWO ROWS OF 8 */
+
+    .steps {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: repeat(8, 1fr);
+
+        gap: 7px;
+    }
+
+    .step {
+        width: 100%;
+        min-width: 0;
+
+        aspect-ratio: 1 / 1;
+
+        touch-action: manipulation;
+    }
+
+    /* Remove desktop beat separation offset */
+
+    .step:nth-child(4n + 1) {
+        margin-left: 0;
+    }
+
+    /* BOTTOM CONTROLS */
+
+    .bottom-controls {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        padding: 16px;
+        gap: 18px;
+    }
+
+    .volume-control {
+        max-width: none;
+        width: 100%;
+    }
+
+    #masterVolume {
+        width: 100%;
+        height: 35px;
+    }
+
+    /* SAVE / LOAD */
+
+    .beat-storage {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    #beatName {
+        width: 100%;
+        height: 48px;
+
+        font-size: 16px;
+    }
+
+    #saveBeatButton,
+    #loadBeatsButton,
+    #clearButton {
+        width: 100%;
+        height: 48px;
+    }
+
+    /* SAVED BEATS */
+
+    .saved-beats-panel {
+        padding: 18px;
+    }
+
+    .saved-beat-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .saved-beat-actions {
+        width: 100%;
+    }
+
+    .saved-beat-actions button {
+        flex: 1;
+        min-height: 44px;
+    }
+}

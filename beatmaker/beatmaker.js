@@ -1545,3 +1545,34 @@ closeBeatsButton.addEventListener(
 
     }
 );
+
+// ========================================
+// iOS SILENT MODE NOTICE
+// ========================================
+
+const iosAudioNotice =
+    document.getElementById("iosAudioNotice");
+
+const closeIosAudioNotice =
+    document.getElementById("closeIosAudioNotice");
+
+const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (
+        navigator.platform === "MacIntel" &&
+        navigator.maxTouchPoints > 1
+    );
+
+if (isIOS && iosAudioNotice) {
+    iosAudioNotice.hidden = false;
+}
+
+if (closeIosAudioNotice) {
+
+    closeIosAudioNotice.addEventListener(
+        "click",
+        () => {
+            iosAudioNotice.hidden = true;
+        }
+    );
+}

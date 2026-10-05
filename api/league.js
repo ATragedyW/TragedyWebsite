@@ -44,8 +44,8 @@ export default async function handler(req, res) {
     res.setHeader('Cache-Control', 'no-store');
     if (req.method !== 'GET') { res.setHeader('Allow', 'GET'); return res.status(405).json({ error: 'Method not allowed' }); }
     const key = process.env.RIOT_API_KEY;
-    const name = process.env.RIOT_GAME_NAME || 'TragedyADC';
-    const tag = process.env.RIOT_TAG_LINE || 'ttv';
+    const name = process.env.RIOT_GAME_NAME || 'Tragedy';
+    const tag = process.env.RIOT_TAG_LINE || 'chaos';
     const platform = (process.env.RIOT_PLATFORM || 'na1').toLowerCase();
     if (!key) return res.status(503).json({ error: 'League profile is not connected yet.' });
     if (!platforms[platform]) return res.status(503).json({ error: 'League region configuration is invalid.' });

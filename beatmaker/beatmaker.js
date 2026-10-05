@@ -4,25 +4,33 @@
 // ========================================
 
 const STEPS = 16;
-
-// ========================================
-// AUDIO ENGINE
-// ========================================
-
 const AudioContext =
     window.AudioContext || window.webkitAudioContext;
 
-const audioContext = new AudioContext();
+let audioContext = null;
+let masterGain = null;
+let noiseBuffer = null;
 
+async function initAudio() {
 
-// MASTER VOLUME
+    if (!audioContext) {
 
-const masterGain = audioContext.createGain();
+        audioContext = new AudioContext();
 
-masterGain.gain.value = 0.8;
+        masterGain = audioContext.createGain();
+        masterGain.gain.value = 0.8;
+        masterGain.connect(audioContext.destination);
 
-masterGain.connect(audioContext.destination);
+        // Create noise buffer AFTER AudioContext exists
+        noiseBuffer = createNoiseBuffer();
+    }
 
+    if (audioContext.state === "suspended") {
+        await audioContext.resume();
+    }
+
+    return audioContext;
+}
 
 // ========================================
 // KICK
@@ -135,9 +143,6 @@ function createNoiseBuffer() {
 
     return buffer;
 }
-
-
-const noiseBuffer = createNoiseBuffer();
 
 
 // ========================================
@@ -588,15 +593,7 @@ tracks.forEach(track => {
 
                 // Browsers require user interaction
                 // before audio can start.
-
-                if (
-                    audioContext.state ===
-                    "suspended"
-                ) {
-
-                    await audioContext.resume();
-
-                }
+                await initAudio();
 
 
                 step.classList.toggle(
@@ -743,14 +740,7 @@ playButton.addEventListener(
         if (playing) return;
 
 
-        if (
-            audioContext.state ===
-            "suspended"
-        ) {
-
-            await audioContext.resume();
-
-        }
+        await initAudio();
 
 
         playing = true;
@@ -846,17 +836,17 @@ const masterVolume =
 
 masterVolume.addEventListener(
     "input",
-    () => {
+    async () => {
+
+        await initAudio();
 
         masterGain.gain.setTargetAtTime(
             Number(masterVolume.value),
             audioContext.currentTime,
             0.01
         );
-
     }
 );
-
 
 // ========================================
 // CLEAR PATTERN

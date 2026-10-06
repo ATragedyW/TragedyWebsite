@@ -1,34 +1,25 @@
-# TragedyWebsite
+# Tragedy Chaos website
 
-## League profile
+## Files
+- `index.html`: homepage (hero, beatmaker, merch preview, About).
+- `style.css`: shared colors and components.
+- `brand.css`: homepage/Shop layout, responsive rules, and logo sizing.
+- `script.js`: Spotify, League, Twitch, and account navigation.
+- `brand.js`: validates beatmaker messages and resizes its homepage frame.
+- `beatmaker/`: standalone instrument and embedded view.
+- `shop/index.html`: collection placeholder; checkout is not enabled.
+- `images/Header.png`: approved brand logo.
+- `assets/merch-banner.png`: merchandise concept image.
 
-The League card displays TragedyADC#ttv on North America: profile icon, account level, Solo/Duo and Flex ranks, LP, season win rates, and the three champions with the highest mastery.
+`style-red.css` is an unused earlier copy. Keep it outside the active site as a backup, or remove it after verifying the update. The site loads `style.css` and `brand.css`.
 
-Add your Riot API key to `RIOT_API_KEY` in `.env.local`. Never put this key in browser JavaScript or commit it. The existing `.gitignore` excludes `.env.local`.
+## Local preview
+Run `vercel dev --listen 3000` from the Website folder, then open http://127.0.0.1:3000. Stop with Ctrl+C. This runs the pages and `/api/spotify` and `/api/league`; opening HTML directly or using a static server does not run the API functions.
 
-For Vercel, add these environment variables in the project settings and redeploy:
+## Configuration
+Keep private settings in `.env.local` and your deployment provider's environment settings. Never commit credentials. Preserve your existing Spotify and Supabase configuration.
 
-    RIOT_API_KEY=<your private key>
-    RIOT_GAME_NAME=TragedyADC
-    RIOT_TAG_LINE=ttv
-    RIOT_PLATFORM=na1
+League uses `RIOT_API_KEY`, `RIOT_GAME_NAME=TragedyADC`, `RIOT_TAG_LINE=ttv`, and `RIOT_PLATFORM=na1`. Set the private key server-side. The backend displays the account, ranked queues, and champion mastery; it caches successful results for five minutes. See the existing `api/` files for implementation.
 
-Use `vercel dev` to run locally with the API functions. Opening index.html directly or using a static-only server does not run `/api/league` or `/api/spotify`.
-
-Get a key at https://developer.riotgames.com/. Development keys expire after 24 hours; apply for the appropriate longer-lived key for ongoing use.
-
-The server resolves the Riot ID to a PUUID, then requests Summoner-V4, League-V4, and Champion-Mastery-V4. Images and champion names come from Data Dragon. Successful results are cached for five minutes in Vercel and in each warm server instance. Concurrent requests in an instance share one refresh, and failed requests have a cooldown; unranked queues and accounts without mastery have explicit empty states. Cache and cooldown are per instance, not a global rate limiter.
-
-Documentation: https://developer.riotgames.com/docs/lol
-
-## Run the website locally
-
-Open a terminal in D:\Documents\Website and run:
-
-    vercel dev --listen 3000
-
-Then visit http://127.0.0.1:3000 in your browser. Keep that terminal running while you work. Stop it with Ctrl+C.
-
-The Vercel CLI runs both the HTML page and the API functions in the api folder. Opening index.html directly or using VS Code Live Server does not execute those functions, so Spotify and League requests will fail there. If port 3000 is occupied, use another port and visit that port instead.
-
-If the Vercel CLI is missing, install it with `npm install -g vercel`. Your current computer already has it installed.
+## Before publishing
+Check desktop/mobile layout, the logo, Shop and account links, beatmaker play/stop/save/load, Spotify states, League, and Twitch. Use the existing deployment setup when ready. Link to Shopify only once its checkout and products are ready.

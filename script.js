@@ -1,170 +1,90 @@
-// =========================
-// SPOTIFY NOW PLAYING
-// =========================
 
 async function getCurrentlyPlaying() {
-
     const nowPlaying =
         document.getElementById("nowPlaying");
-
     if (!nowPlaying) {
         return;
     }
-
     try {
-
-        // Ask OUR backend for Tragedy's Spotify status
         const response = await fetch("/api/spotify");
-
-
-        // =========================
-        // API ERROR
-        // =========================
-
         if (!response.ok) {
-
             console.error(
                 "Spotify backend error:",
                 response.status
             );
-
             nowPlaying.innerHTML = `
                 <div class="spotify-status">
                     <span class="status-dot"></span>
                     <span>SPOTIFY ERROR</span>
                 </div>
-
                 <div class="spotify-content">
-
                     <div class="song-info">
-
                         <h3>
                             Unable to get Spotify
                         </h3>
-
                         <p>
                             Spotify status is currently unavailable.
                         </p>
-
                     </div>
-
                 </div>
             `;
-
             clearInterval(progressInterval);
-
             return;
         }
-
-
-        // =========================
-        // GET DATA FROM BACKEND
-        // =========================
-
         const data = await response.json();
-
-
-        // =========================
-        // NOTHING PLAYING
-        // =========================
-
         if (!data.isPlaying) {
-
             nowPlaying.innerHTML = `
                 <div class="spotify-status">
-
                     <span class="status-dot"></span>
-
                     <span>SPOTIFY</span>
-
                 </div>
-
-
                 <div class="spotify-content">
-
                     <div class="song-info">
-
                         <h3>
                             Nothing is playing
                         </h3>
-
                         <p>
                             Tragedy isn't listening to anything right now.
                         </p>
-
                     </div>
-
                 </div>
             `;
-
             clearInterval(progressInterval);
-
             return;
         }
-
-
-        // =========================
-        // DISPLAY CURRENT SONG
-        // =========================
-
         nowPlaying.innerHTML = `
-
             <div class="spotify-status">
-
                 <span class="status-dot"></span>
-
                 <span>NOW PLAYING</span>
-
             </div>
-
-
             <div class="spotify-content">
-
                 <img
                     src="${data.albumArt}"
                     alt="Album artwork"
                 >
-
-
                 <div class="song-info">
-
                     <h3>
                         ${data.title}
                     </h3>
-
-
                     <p>
                         ${data.artist}
                     </p>
-
-
                     <div class="song-progress">
-
                         <div class="progress-bar">
-
                             <div
                                 id="progressFill"
                                 class="progress-fill">
                             </div>
-
                         </div>
-
-
                         <div class="progress-times">
-
                             <span id="currentTime">
                                 ${formatTime(data.progress)}
                             </span>
-
                             <span id="duration">
                                 ${formatTime(data.duration)}
                             </span>
-
                         </div>
-
                     </div>
-
-
                     <a
                         class="spotify-link"
                         href="${data.spotifyUrl}"
@@ -173,83 +93,46 @@ async function getCurrentlyPlaying() {
                     >
                         OPEN IN SPOTIFY →
                     </a>
-
                 </div>
-
             </div>
         `;
-
-
-        // Start animated progress bar
         startProgressBar(
             data.progress,
             data.duration
         );
-
     }
-
     catch (error) {
-
         console.error(
             "Unable to contact Spotify backend:",
             error
         );
-
         nowPlaying.innerHTML = `
             <div class="spotify-status">
-
                 <span class="status-dot"></span>
-
                 <span>SPOTIFY ERROR</span>
-
             </div>
-
             <div class="spotify-content">
-
                 <div class="song-info">
-
                     <h3>
                         Spotify unavailable
                     </h3>
-
                     <p>
                         Unable to connect to Spotify right now.
                     </p>
-
                 </div>
-
             </div>
         `;
-
         clearInterval(progressInterval);
     }
 }
-
-
-
-// =========================
-// PROGRESS BAR
-// =========================
-
 let progressInterval;
-
-
-
-// =========================
-// FORMAT TIME
-// =========================
-
 function formatTime(milliseconds) {
-
     const totalSeconds =
         Math.floor(milliseconds / 1000);
-
     const minutes =
         Math.floor(totalSeconds / 60);
-
     const seconds =
         totalSeconds % 60;
-
     return (
         minutes +
         ":" +
@@ -258,117 +141,66 @@ function formatTime(milliseconds) {
             .padStart(2, "0")
     );
 }
-
-
-
-// =========================
-// START PROGRESS BAR
-// =========================
-
 function startProgressBar(
     startingProgress,
     duration
 ) {
-
     clearInterval(progressInterval);
-
     let progress =
         startingProgress;
-
-
     updateProgressBar(
         progress,
         duration
     );
-
-
     progressInterval =
         setInterval(() => {
-
             progress += 1000;
-
-
             if (progress >= duration) {
-
                 clearInterval(
                     progressInterval
                 );
-
                 getCurrentlyPlaying();
-
                 return;
             }
-
-
             updateProgressBar(
                 progress,
                 duration
             );
-
         }, 1000);
 }
-
-
-
-// =========================
-// UPDATE PROGRESS BAR
-// =========================
-
 function updateProgressBar(
     progress,
     duration
 ) {
-
     const progressFill =
         document.getElementById(
             "progressFill"
         );
-
     const currentTime =
         document.getElementById(
             "currentTime"
         );
-
-
     if (
         !progressFill ||
         !currentTime
     ) {
         return;
     }
-
-
     const percent =
         Math.min(
             (progress / duration) * 100,
             100
         );
-
-
     progressFill.style.width =
         `${percent}%`;
-
-
     currentTime.textContent =
         formatTime(progress);
 }
-
-
-
-// =========================
-// START
-// =========================
-
-// Load immediately
 getCurrentlyPlaying();
-
-
-// Ask the backend for an update every 10 seconds
 setInterval(
     getCurrentlyPlaying,
     10000
 );
-// League profile: all Riot requests and credentials stay on the server.
 async function loadLeagueProfile() {
     const container = document.getElementById('leagueProfile');
     if (!container) return;
@@ -418,10 +250,6 @@ async function loadLeagueProfile() {
 }
 loadLeagueProfile();
 setInterval(loadLeagueProfile, 300000);
-
-
-// Twitch's player needs the embedding hostname, without its port.
-// This works for local previews and the deployed site's HTTPS domain.
 function mountTwitchStream() {
     const mount = document.getElementById('twitchPlayerMount');
     if (!mount) return;
@@ -456,122 +284,62 @@ function mountTwitchStream() {
     else window.addEventListener('resize', update);
 }
 mountTwitchStream();
-
-// ========================================
-// TRAGEDY // AUTH STATE
-// ========================================
-
 const SUPABASE_URL = "https://gckhdwlyvsystwirgvmf.supabase.co";
 const SUPABASE_KEY = "sb_publishable__gaBR077T17LOA3z6lpy0Q_GWPNrHmH";
-
 const supabaseClient = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
-
 const loggedOutNav =
     document.getElementById("loggedOutNav");
-
 const userMenu =
     document.getElementById("userMenu");
-
 const navUsername =
     document.getElementById("navUsername");
-
 const logoutButton =
     document.getElementById("logoutButton");
-
-
-// ========================================
-// UPDATE NAVBAR
-// ========================================
-
 async function updateAuthNavigation() {
-
     const {
         data: { session }
     } = await supabaseClient.auth.getSession();
-
-
-    // LOGGED OUT
-
     if (!session) {
-
         loggedOutNav.hidden = false;
         userMenu.hidden = true;
-
         return;
     }
-
-
-    // LOGGED IN
-
     const user = session.user;
-
     const username =
         user.user_metadata?.username ||
         user.email?.split("@")[0] ||
         "ACCOUNT";
-
-
     navUsername.textContent =
         username.toUpperCase();
-
-
     loggedOutNav.hidden = true;
     userMenu.hidden = false;
-
 }
-
-
-// ========================================
-// LOGOUT
-// ========================================
-
 logoutButton.addEventListener(
     "click",
     async () => {
-
         logoutButton.disabled = true;
         logoutButton.textContent = "LOGGING OUT...";
-
         const { error } =
             await supabaseClient.auth.signOut();
-
-
         if (error) {
-
             console.error(
                 "Logout error:",
                 error
             );
-
             logoutButton.disabled = false;
             logoutButton.textContent = "LOG OUT";
-
             return;
         }
-
-
         window.location.href = "/";
-
     }
 );
-
-
-// ========================================
-// LISTEN FOR AUTH CHANGES
-// ========================================
-
 supabaseClient.auth.onAuthStateChange(
     () => {
-
         updateAuthNavigation();
-
     }
 );
-
-
-// Initial check
-
 updateAuthNavigation();
+

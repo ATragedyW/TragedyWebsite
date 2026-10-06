@@ -1,6 +1,10 @@
+# Local configuration and dependencies
 .env
-.env.local
-.env.production
-.env*.local
-.vercel
-node_modules
+.env.*
+.vercel/
+node_modules/
+
+# Local backups
+style-backup.css
+Website-backup/
+watch-live-backup-*/

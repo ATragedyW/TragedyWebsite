@@ -1,0 +1,14 @@
+APPLY THE CLEANUP
+
+Your original website has not been edited.
+
+1. Back up D:\Documents\Website.
+2. Copy the contents of this package into D:\Documents\Website, merging shop/ and replacing matching files.
+3. Keep all existing api/, beatmaker/, images/, assets/, login/, signup/, account/, changelog/, environment files, and deployment settings.
+4. Confirm images/Header.png exists. The homepage and Shop header use it; the main hero now uses it too, as requested.
+5. Move style-red.css and style-backup.css out of the active website folder if you want a tidier folder. Keep them in your backup. No page needs style-red.css.
+6. Start your usual Vercel local preview and check the pages before publishing.
+
+Main CSS was rebuilt around the current pages, removing obsolete projects/old-navigation styles and repeated overrides. brand.css retains current layout. JavaScript formatting/comments were condensed without changing executable logic. README and ignore rules were simplified.
+
+Checks: JavaScript syntax, executable-script equivalence under whitespace/comment normalization, page IDs and integration hooks, local asset paths, CSS brace balance and palette references. Live API/auth/audio and browser layout were not tested.

@@ -1,89 +1,35 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>TragedyADC</title>
-
-<link rel="stylesheet" href="style.css">
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tragedy Chaos — Music, Gaming &amp; Merch</title>
+<meta name="description" content="Welcome to the chaos. Make a beat, explore upcoming Tragedy merch, and catch up with TragedyADC on Twitch, League and Spotify.">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/brand.css">
 </head>
-
 <body>
-
-
-<!-- Navigation -->
-<!-- Navigation -->
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="navbar">
-
-    <a href="#home" class="logo">
-        TRAGEDY
-    </a>
-
-    <nav class="nav-links">
-
-        <a href="#home">HOME</a>
-        <a href="#watch">WATCH</a>
-
-        <!-- PROJECTS DROPDOWN -->
-        <div class="nav-dropdown">
-
-            <button class="dropdown-button">
-                PROJECTS
-                <span class="dropdown-arrow">▾</span>
-            </button>
-
-            <div class="dropdown-menu">
-                <a href="#projects">PROJECTS</a>
-                <a href="#league">LEAGUE</a>
-                <a href="/beatmaker/">BEATMAKER</a>
-            </div>
-
-        </div>
-
-        <a href="#spotify">SPOTIFY</a>
-
-        <!-- MORE DROPDOWN -->
-        <div class="nav-dropdown">
-
-            <button class="dropdown-button">
-                MORE
-                <span class="dropdown-arrow">▾</span>
-            </button>
-
-            <div class="dropdown-menu">
-                <a href="#about">ABOUT</a>
-                <a href="/changelog/">CHANGELOG</a>
-            </div>
-
-        </div>
-
-    </nav>
-
-
-    <div class="nav-auth" id="navAuth">
-
-    <!-- Logged-out navigation -->
+<a href="/" class="logo">
+<img src="/images/Header.png" alt="Tragedy Chaos">
+</a>
+<nav class="nav-links" aria-label="Main navigation">
+<a href="#home">HOME</a>
+<a href="#beatmaker">BEATMAKER</a>
+<a href="/shop/">SHOP</a>
+<a href="#about">ABOUT</a>
+</nav>
+<div class="nav-auth" id="navAuth">
     <div class="logged-out-nav" id="loggedOutNav">
-
         <a href="/login/" class="login-nav">
             LOG IN
         </a>
-
         <a href="/signup/" class="signup-nav">
             SIGN UP
         </a>
-
     </div>
-
-
-    <!-- Logged-in navigation -->
     <div class="user-menu" id="userMenu" hidden>
-
         <button
             class="user-menu-button"
             id="userMenuButton"
@@ -92,67 +38,71 @@
             <span id="navUsername">ACCOUNT</span>
             <span class="dropdown-arrow">▾</span>
         </button>
-
         <div class="user-dropdown">
-
             <a href="/account/">
                 ACCOUNT
             </a>
-
             <a href="/beatmaker/">
                 SAVED BEATS
             </a>
-
             <button
                 type="button"
                 id="logoutButton"
             >
                 LOG OUT
             </button>
-
         </div>
-
     </div>
-
 </div>
-
 </header>
-
-
-<!-- Hero -->
-<main>
-
-    <section id="home" class="hero">
-
-        <div class="hero-content">
-            <p class="eyebrow">WELCOME TO MY WORLD</p>
-
-            <h1>TRAGEDY<br><span>HERE.</span></h1>
-
-            <p class="hero-description">
-                Gaming. Development. Music.
-                <br>
-                Welcome to the chaos.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#projects" class="button primary">VIEW PROJECTS</a>
-                <a href="#about" class="button secondary">ABOUT ME</a>
-
-                <a href="#watch" class="button twitch">WATCH STREAM</a>
-
-               
-
-            </div>
-        </div>
-
-    </section>
-
-<!-- Twitch stream -->
+<main id="main">
+<section id="home" class="hero">
+<div class="hero-content">
+<p class="eyebrow">MUSIC / GAMING / CULTURE</p>
+<h1 class="hero-brand">
+<img src="/images/Header.png" alt="Tragedy Chaos">
+</h1>
+<p class="hero-description">Welcome to the chaos.<br>A place to make something, play something, and be yourself.</p>
+<div class="hero-buttons">
+<a href="#beatmaker" class="button primary">MAKE A BEAT</a>
+<a href="/shop/" class="button secondary">EXPLORE THE MERCH</a>
+</div>
+</div>
+</section>
+<section id="beatmaker" class="brand-section beatmaker-feature" aria-labelledby="beatmakerHeading">
+<div class="feature-heading">
+<div>
+<p class="eyebrow">THE CREATIVE SIDE</p>
+<h2 id="beatmakerHeading">MAKE SOME NOISE.</h2>
+</div>
+<a class="text-link" href="/beatmaker/">OPEN FULL BEATMAKER →</a>
+</div>
+<p class="section-intro">Pick your sounds, tap a pattern, and press play. Log in to save your beats.</p>
+<iframe id="beatmakerFrame" class="beatmaker-frame" src="/beatmaker/?embed=1" title="Interactive Tragedy beatmaker" loading="lazy">
+</iframe>
+</section>
+<section id="merch" class="brand-section merch-feature" aria-labelledby="merchHeading">
+<div class="merch-art">
+<img src="/assets/merch-banner.png" alt="Concept preview of the vintage-white Tragedy T-shirt and washed-black monogram zip hoodie" loading="lazy" width="2172" height="724">
+</div>
+<div class="merch-copy">
+<p class="eyebrow">COLLECTION 001 / COMING SOON</p>
+<h2 id="merchHeading">WEAR THE CHAOS.</h2>
+<p>Gothic lettering. Deep-red details. The first Tragedy tees and hoodies are taking shape.</p>
+<a href="/shop/" class="button primary">PREVIEW THE COLLECTION</a>
+</div>
+</section>
+<section id="about" class="about brand-about" aria-labelledby="aboutHeading">
+<div class="section-heading">
+<p class="eyebrow">BEHIND THE CHAOS</p>
+<h2 id="aboutHeading">I'M TRAGEDY.</h2>
+</div>
+<p class="brand-bio">I'm TragedyADC. I build things, make beats, and spend time on the Rift. Here’s what I’m playing, streaming, and listening to.</p>
+<div class="world-grid">
 <section id="watch" class="watch-section" aria-labelledby="watchHeading">
     <div class="section-heading">
         <p class="eyebrow">TRAGEDYADC ON TWITCH</p>
-        <h2 id="watchHeading">WATCH LIVE</h2>
+        <h3 id="watchHeading">WATCH LIVE</h3>
     </div>
     <div class="watch-card">
         <div id="twitchPlayerMount" class="twitch-player-mount">
@@ -163,62 +113,43 @@
             <a href="https://www.twitch.tv/tragedyadc" class="watch-link" target="_blank" rel="noopener noreferrer">OPEN ON TWITCH →</a>
         </div>
     </div>
-</section>
-
-<!-- Spotify -->
-<section id="spotify" class="spotify-section">
-
+</section> <section id="spotify" class="spotify-section">
     <div class="section-heading">
         <p class="eyebrow">LIVE FROM SPOTIFY</p>
-        <h2>NOW PLAYING</h2>
+        <h3>NOW PLAYING</h3>
     </div>
-
     <div id="nowPlaying" class="now-playing">
-
         <div class="spotify-status">
-            <span class="status-dot"></span>
+            <span class="status-dot">
+</span>
             <span>NOW PLAYING</span>
         </div>
-
         <div class="spotify-content">
-
             <img
                 id="albumArt"
-                src=""
+                hidden
                 alt="Album artwork"
             >
-
             <div class="song-info">
-
                 <h3 id="songTitle">Loading...</h3>
-
                 <p id="songArtist">
                     Connecting to Spotify...
                 </p>
-
                 <a
                     id="spotifyTrackLink"
                     class="spotify-link"
                     href="#"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                 >
                     OPEN IN SPOTIFY →
                 </a>
-
             </div>
-
         </div>
-
     </div>
-
-</section>
-
-
-    <!-- League of Legends -->
-    <section id="league" class="league-section">
+</section> <section id="league" class="league-section">
         <div class="section-heading">
             <p class="eyebrow">ON THE RIFT</p>
-            <h2>LEAGUE PROFILE</h2>
+            <h3>LEAGUE PROFILE</h3>
         </div>
         <div id="leagueProfile" class="league-profile" aria-live="polite">
             <h3>TragedyADC#ttv</h3>
@@ -226,82 +157,22 @@
         </div>
         <p class="riot-notice">TragedyADC is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
     </section>
-    <!-- Projects -->
-    <section id="projects" class="projects">
-
-        <div class="section-heading">
-            <p class="eyebrow">WHAT I'M WORKING ON</p>
-            <h2>PROJECTS</h2>
-        </div>
-
-        <div class="project-grid">
-
-            <div class="project-card">
-                <div class="project-number">01</div>
-                <h3>ROBLOX</h3>
-                <p>
-                    Games, systems, and experiments I'm building
-                    inside Roblox.
-                </p>
-                <a href="#">VIEW PROJECT →</a>
-            </div>
-
-            <div class="project-card">
-                <div class="project-number">02</div>
-                <h3>STREAMING</h3>
-                <p>
-                    Live streams, gaming, and everything happening
-                    on the channel.
-                </p>
-                <a href="#">WATCH STREAM →</a>
-            </div>
-
-            <div class="project-card">
-                <div class="project-number">03</div>
-                <h3>MUSIC</h3>
-                <p>
-                    EDM and house music I'm experimenting with.
-                </p>
-                <a href="#">LISTEN →</a>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- About -->
-    <section id="about" class="about">
-
-        <div class="section-heading">
-            <p class="eyebrow">WHO IS TRAGEDY?</p>
-            <h2>ABOUT ME</h2>
-        </div>
-
-        <p class="about-text">
-            I'm TragedyADC — a creator who likes building things,
-            playing games, making music, and probably starting
-            more projects than I can finish.
-        </p>
-
-    </section>
-
+</div>
+</section>
 </main>
-
-
-<!-- Footer -->
- 
-<footer>
-    <p>© 2026 TRAGEDYADC</p>
-    
-      <div class="footer-links">
-            <a href="/changelog/">CHANGELOG</a>
-        </div>
+<footer class="site-footer">
+<p>© 2026 TRAGEDY CHAOS</p>
+<div class="footer-links">
+<a href="/shop/">SHOP</a>
+<a href="/changelog/">CHANGELOG</a>
+</div>
 </footer>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+<script src="/script.js">
+</script>
+<script src="/brand.js">
+</script>
 </body>
 </html>
+
